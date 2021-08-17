@@ -1,0 +1,21 @@
+name: Rust
+'on':
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build
+      working-directory: src/
+      run: cargo build --verbose
+    - name: Run tests
+      working-directory: src/
+      run: cargo test --verbose
